@@ -43,11 +43,11 @@ module AaaaAaaa
 
     def zenkaku_step
       _use_str = @nextstep.to_s
-      hankaku_to_zenkaku = 
-        [["0", "０"], ["1", "１"], ["2", "２"],
-         ["3", "３"], ["4", "４"], ["5", "５"],
-         ["6", "６"], ["7", "７"], ["8", "８"],
-         ["9", "９"]]
+      zenkaku_table = "０１２３４５６７８９".chars
+      hankaku_to_zenkaku =
+        [*0..9]
+        .map {|i| i.to_s}
+        .zip zenkaku_table 
       hankaku_to_zenkaku.each do |from, to|
         _use_str.gsub! from, to
       end
