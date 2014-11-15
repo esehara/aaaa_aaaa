@@ -60,9 +60,13 @@ module AaaaAaaa
       @prefix || ""
     end
 
-    def line
+    def aaaa_str
       step_length = @nextstep.to_s.length - 1
-      line_str = prefix_str + (@str * ((@step - (step_length + 1) - (prefix_length)) / @str.length)) + zenkaku_step
+      @str * ((@step - (step_length + 1) - (prefix_length)) / @str.length)
+    end
+
+    def line
+      line_str = prefix_str + aaaa_str  + zenkaku_step
       @nextstep += @step
       return line_str
     end
