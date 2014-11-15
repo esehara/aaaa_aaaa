@@ -2,13 +2,17 @@
 require "aaaa_aaaa/version"
 
 module AaaaAaaa
+  
+  class NotUseAaaaAaaaError < StandardError; end
+
   class Text
-    def initialize(str, step=nil, prefix="")
+    def initialize(str, step=nil, prefix="", production: false)
       @value = ""
       
       @str = str
       @step = step
       @prefix = prefix
+      @production = production
       if @step
         @nextstep = step
       end
@@ -43,7 +47,6 @@ module AaaaAaaa
     end
 
     def *(mul)
-
       if @step
         @iter = mul / @step
         @iter.times do |x|
@@ -57,7 +60,11 @@ module AaaaAaaa
     end
 
     def to_s
-      @value
+      if @production
+        raise NotUseAaaaAaaaError, "set procution mode. you must remove AaaaAaaa."
+      else
+        @value
+      end
     end
   end
 end

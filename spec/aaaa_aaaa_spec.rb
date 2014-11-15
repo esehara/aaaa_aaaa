@@ -44,5 +44,15 @@ describe AaaaAaaa do
       expect((AaaaAaaa::Text.new("あ", step=10, prefix="名前") * 20).to_s)
         .to eq("名前" + ("あ" * 6) + "１０" + "名前" + ("あ" * 6) + "２０")
     end
+    
+    it 'production mode is raise error' do
+      raise_error = false
+      begin
+        (AaaaAaaa::Text.new("あ", production: true) * 20).to_s
+      rescue AaaaAaaa::NotUseAaaaAaaaError
+        raise_error = true
+      end
+      expect(raise_error).to be true
+    end
   end
 end
