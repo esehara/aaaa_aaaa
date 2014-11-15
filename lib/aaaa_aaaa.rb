@@ -48,9 +48,7 @@ module AaaaAaaa
         [*0..9]
         .map {|i| i.to_s}
         .zip zenkaku_table 
-      hankaku_to_zenkaku.each do |from, to|
-        _use_str.gsub! from, to
-      end
+      hankaku_to_zenkaku.each { |from, to| _use_str.gsub! from, to }
       _use_str
     end
  
