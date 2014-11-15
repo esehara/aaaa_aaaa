@@ -4,8 +4,8 @@ require "aaaa_aaaa/version"
 module AaaaAaaa
   
   class NotUseAaaaAaaaError < StandardError; end
-
   class Text
+    public
     def initialize(str, step=nil, prefix="", production: false)
       @value = ""
       
@@ -18,6 +18,29 @@ module AaaaAaaa
       end
     end
    
+    def *(mul)
+      if @step
+        @iter = mul / @step
+        @iter.times do |x|
+          @value += line 
+        end
+        @value += @str * (mul % @step)
+      else
+        @value = @str * (mul / @str.length)
+      end
+      self
+    end
+
+    def to_s
+      if @production
+        raise NotUseAaaaAaaaError, "set procution mode. you must remove AaaaAaaa."
+      else
+        @value
+      end
+    end
+    
+    private
+
     def zenkaku_step
       _use_str = @nextstep.to_s
       hankaku_to_zenkaku = 
@@ -44,27 +67,6 @@ module AaaaAaaa
       line_str = prefix_str + (@str * ((@step - (step_length + 1) - (prefix_length)) / @str.length)) + zenkaku_step
       @nextstep += @step
       return line_str
-    end
-
-    def *(mul)
-      if @step
-        @iter = mul / @step
-        @iter.times do |x|
-          @value += line 
-        end
-        @value += @str * (mul % @step)
-      else
-        @value = @str * (mul / @str.length)
-      end
-      self
-    end
-
-    def to_s
-      if @production
-        raise NotUseAaaaAaaaError, "set procution mode. you must remove AaaaAaaa."
-      else
-        @value
-      end
     end
   end
 end
