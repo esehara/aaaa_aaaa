@@ -22,9 +22,9 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
-AaaaAaaa::Text.new("あ", step=10) * 15).to_s
+(AaaaAaaa::Text.new("あ", step=10) * 15).to_s
 # => "ああああああああ１０あああああ"
-AaaaAaaa::Text.new("あ", step=10, prefix="文章") * 15).to_s
+(AaaaAaaa::Text.new("あ", step=10, prefix="文章") * 15).to_s
 # => "文章ああああああ１０文章あああ"
 (AaaaAaaa::Text.new("あ", step=10, production: true) * 15).to_s
 # raise Error !! -> AaaaAaaa::NotUseAaaaAaaaError
