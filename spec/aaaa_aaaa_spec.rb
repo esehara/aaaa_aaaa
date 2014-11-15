@@ -7,6 +7,19 @@ describe AaaaAaaa do
   end
 
   describe ":: Text" do
+    describe ":: length " do
+
+      it '1127 string eq 1127 length with step' do
+        expect((AaaaAaaa::Text.new("あ", step=10) * 1127).to_s.length)
+          .to eq 1127
+      end
+
+      it '1127 string eq 1127 length with step and prefix' do
+        expect((AaaaAaaa::Text.new("あ", step=10, prefix="文章") * 1127).to_s.length)
+          .to eq 1127
+      end
+    end
+
     it 'is generate multi string' do
       expect((AaaaAaaa::Text.new("あ") * 5).to_s).to eq "あああああ"
     end
@@ -30,16 +43,7 @@ describe AaaaAaaa do
        .to eq(("□■" * 4) + "１０")
     end
    
-    it '1000 string eq 1000 length' do
-      expect((AaaaAaaa::Text.new("あ", step=10) * 1000).to_s.length)
-        .to eq 1000
-    end
 
-    it '1127 string eq 1127 length' do
-      expect((AaaaAaaa::Text.new("あ", step=10) * 1127).to_s.length)
-        .to eq 1127
-    end
- 
     it 'use prefix' do
       expect((AaaaAaaa::Text.new("あ", step=10, prefix="名前") * 20).to_s)
         .to eq("名前" + ("あ" * 6) + "１０" + "名前" + ("あ" * 6) + "２０")
