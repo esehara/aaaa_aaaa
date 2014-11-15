@@ -1,6 +1,7 @@
 # AaaaAaaa
 
-TODO: Write a gem description
+example string generator for web design, example "あああああああああ".
+
 
 ## Installation
 
