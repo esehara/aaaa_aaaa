@@ -66,7 +66,7 @@ module AaaaAaaa
     end
 
     def line
-      line_str = prefix_str + aaaa_str  + zenkaku_step
+      line_str = prefix_str + aaaa_str + zenkaku_step
       @nextstep += @step
       return line_str
     end
